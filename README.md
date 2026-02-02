@@ -1,568 +1,129 @@
-# Cursor Config Web
+# Cursor Config Apple
 
-> **Version**: See [latest release](https://github.com/sinelanguage/cursor-config-web/releases/latest) | [CHANGELOG.md](CHANGELOG.md) | Standards evolve over time - check git tags for version tracking
+> **Version**: See [latest release](https://github.com/sinelanguage/cursor-config-ios/releases/latest) | [CHANGELOG.md](CHANGELOG.md)
 
-A comprehensive Cursor AI configuration for principal frontend development, featuring modern TypeScript, React 18+, Vite, Module Federation, and enterprise-grade testing, security, and accessibility standards.
-
-**Note**: This configuration follows semantic versioning (SemVer). See [CHANGELOG.md](CHANGELOG.md) for detailed change history and use git tags to track specific versions of these standards.
+A comprehensive Cursor AI configuration for seasoned Apple developers building native apps for macOS, iOS, iPadOS, and tvOS using Swift 5.10, SwiftUI, Swift Concurrency, and Xcode 17.
 
 ## What This Is
 
-This is a **portable Cursor AI configuration** that can be used in any new frontend project. It contains:
+This is a **portable Cursor AI configuration** you can copy into any Apple-native project. It includes:
 
-- **Agent Rules** (`.cursorrules`) - Comprehensive coding standards and architectural principles
-  - ✅ **Auto-detected by Cursor** - Works immediately after copying
-- **Context Documentation** (`.context/`) - Reference docs for AI context retention
-  - ✅ **Auto-detected by Cursor** - Automatically indexed for AI context
-- **Agent Skills** (`.cursor/skills/`) - Reusable workflows and task playbooks
-  - ✅ **Auto-detected by Cursor** - Discovered at startup and available via `/`
-- **Custom Subagents** (`.cursor/agents/`) - Specialized helpers for verification and parallel work
-  - ✅ **Auto-detected by Cursor** - Available to Agent for delegation
-- **Automation Templates** - GitHub Actions and GitLab CI configurations
-  - ⚙️ Manual setup required - Copy to `.github/` or project root
-- **Project Templates** - Reusable config files for Vite, TypeScript, ESLint, Storybook
-  - ⚙️ Manual setup required - Copy from `templates/` and customize
+- **Agent Rules** (`.cursorrules`) - Apple platform engineering standards
+  - Auto-detected by Cursor
+- **Context Documentation** (`.context/`) - Swift and Apple platform guidance
+  - Auto-detected by Cursor
+- **Agent Skills** (`.cursor/skills/`) - Reusable Apple workflows
+  - Auto-detected by Cursor
+- **Custom Subagents** (`.cursor/agents/`) - Verification helpers
+  - Auto-detected by Cursor
+- **Automation Templates** - GitHub Actions for Xcode builds and linting
+- **Project Templates** - Swift Package, SwiftLint, SwiftFormat, Fastlane, Info.plist
 
-**Key Point**: Cursor automatically detects and uses `.cursorrules` and `.context/` files when you open a project. No configuration needed!
+**Key Point**: Cursor automatically detects `.cursorrules` and `.context/` when you open a project.
 
 ## Quick Start
-
-### Cursor Auto-Detection
-
-**Cursor automatically detects**:
-
-- ✅ `.cursorrules` - AI agent configuration (works immediately)
-- ✅ `.context/` - Documentation for AI context (auto-indexed)
-- ✅ `.cursor/` - Workspace settings and additional rules (auto-detected)
-- ✅ `.cursor/skills/` - Agent skills (auto-discovered, slash-command ready)
-- ✅ `.cursor/agents/` - Custom subagents (auto-discovered)
-- ✅ `.cursorignore` - Files to exclude from AI indexing (auto-applied)
-
-**No configuration needed** - Just copy these files and Cursor will use them!
-
-For detailed information about what Cursor automatically detects vs. what requires manual setup, see [SETUP.md](SETUP.md#cursor-auto-detection-vs-manual-setup).
 
 ### 1. Copy to Your Project
 
 **Minimal (Cursor AI only)**:
 
 ```bash
-# Copy only Cursor-specific files
-cp .cursorrules <your-project-root>/
-cp .cursorignore <your-project-root>/
-cp -r .context <your-project-root>/
-cp -r .cursor <your-project-root>/
+cp .cursorrules .cursorignore <your-project-root>/
+cp -r .context .cursor <your-project-root>/
 ```
 
 **Complete setup**:
 
 ```bash
-# Copy all configuration files
 cp .cursorrules .cursorignore <your-project-root>/
 cp -r .cursor .context templates <your-project-root>/
-
-# Copy CI/CD configurations
 cp -r .github <your-project-root>/
-cp .gitlab-ci.yml <your-project-root>/
 ```
 
-### 2. Install Dependencies
+### 2. Apply Templates
 
 ```bash
 cd <your-project-root>
-cp templates/package.json package.json
-npm install
+cp templates/Package.swift Package.swift
+cp templates/.swiftlint.yml .swiftlint.yml
+cp templates/.swiftformat .swiftformat
 ```
 
-### 3. Start Developing
+### 3. Open in Xcode
 
-```bash
-npm run dev
-```
+Use Xcode to create or open your app target, then integrate shared packages from `Package.swift`.
 
-**Note**: See [SETUP.md](SETUP.md) for complete installation instructions and verification steps.
+### 4. Verify Cursor Detection
 
-## How to Use This Repo (End-to-End)
+Ask in Cursor:
 
-Use this section as the default workflow for both new and existing projects.
-
-1. **Decide your scope**
-   - Cursor-only: copy `.cursorrules`, `.cursorignore`, `.context/`, `.cursor/`.
-   - Full stack: also copy `templates/`, `.github/`, and `.gitlab-ci.yml`.
-2. **Open the project in Cursor**
-   - Cursor auto-detects rules, context, skills, agents, and ignore patterns.
-3. **Verify detection**
-   - Ask about `.cursorrules` and `.context/` and confirm replies reference them.
-4. **Apply templates**
-   - Replace or diff your existing `vite.config.ts`, `tsconfig.json`, and `eslint.config.js`.
-5. **Install dependencies**
-   - Copy `templates/package.json` if starting fresh, then run `npm install`.
-6. **Wire CI/CD (optional)**
-   - Copy workflows and add required secrets/variables.
-7. **Use skills and subagents**
-   - Invoke skills with `/` in Agent chat for repeatable workflows.
-8. **Maintain standards**
-   - Update `CHANGELOG.md` for meaningful changes and tag releases.
+- "What SwiftUI architecture patterns do we follow?"
+- "What are our Swift concurrency rules?"
 
 ## How to Use Skills
 
-Skills are invoked from Agent chat and run as guided workflows.
+Skills are invoked from Agent chat using `/`:
 
-1. Open **Agent** in Cursor.
-2. Type `/` to open the skills menu.
-3. Select a skill (for example, `/component-scaffold`).
-4. Provide the requested inputs.
-5. Review the generated output and apply changes.
-
-**Tip**: Skills in this repo are set to explicit invocation, so they only run when you pick them from the `/` menu.
-
-## Greenfield vs Existing Projects
-
-### Greenfield (new app)
-
-- Copy `.cursorrules`, `.cursorignore`, `.context/`, and `.cursor/` into the new repo.
-- Apply templates from `templates/` for Vite, TypeScript, ESLint, and Storybook.
-- Run `/feature-spec` and `/test-plan` before larger features.
-
-### Existing project (already started)
-
-- Add `.cursorrules`, `.cursorignore`, `.context/`, and `.cursor/` first (no code changes).
-- Adopt templates gradually by diffing with current configs.
-- Use `/docs-update`, `/a11y-audit`, and `/perf-check` to improve existing code.
+1. Open Agent in Cursor.
+2. Type `/` and select a skill (e.g., `/swiftui-view-scaffold`).
+3. Provide inputs and apply the generated output.
 
 ## What You Get
 
-### 🤖 AI Agent Rules
+### AI Agent Rules
 
-The `.cursorrules` file configures Cursor AI to act as a principal frontend architect with expertise in:
+The `.cursorrules` file configures Cursor to enforce:
 
-- **TypeScript Excellence**: No `any` types, strict mode, advanced patterns
-- **React 18+ Modern Practices**: Concurrent features, Suspense, performance optimization
-- **Module Federation**: v1 and v2 support with Vite
-- **Design Systems**: Token-based design, component composition patterns
-- **Performance**: Web Vitals targets, code splitting, optimization strategies
-- **Security**: npm audit integration for dependency vulnerability scanning
-- **Accessibility**: WCAG 2.2 Level AA compliance
+- Swift and SwiftUI best practices
+- Swift Concurrency and actor isolation
+- Performance and launch-time optimization
+- Apple accessibility (VoiceOver, Dynamic Type)
+- Secure storage and privacy patterns
+- XCTest and XCUITest standards
 
-### 📚 Context Documentation
+### Context Documentation
 
-The `.context/` directory provides AI context for your project:
+The `.context/` directory provides:
 
-- **architecture.md** - System design, Module Federation setup, state management
-- **design-system.md** - Design tokens, component patterns, theming
-- **workflows.md** - Git branching, commit conventions, CI/CD
-- **conventions.md** - File naming, import organization, code structure
-- **stack.md** - Complete technology stack with versions
+- `architecture.md` - MVVM, navigation, data flow, modules
+- `design-system.md` - HIG, tokens via Asset Catalog, SF Symbols
+- `workflows.md` - Git flow, PR checks, release steps
+- `conventions.md` - Swift naming and file organization
+- `stack.md` - Xcode/Swift/SDK versions and tools
 
-### 🧰 Agent Skills
+### Automation
 
-Agent Skills are reusable, discoverable workflows that Cursor can invoke automatically or via `/` commands. This repo includes a sample skill you can tailor for your stack.
+GitHub Actions templates:
 
-- **Location**: `.cursor/skills/<skill-name>/SKILL.md`
-- **Format**: YAML frontmatter + instructions
-- **Use cases**: scaffolding components, updating docs, running release checklists
-- **Requires**: Cursor 2.4+ (skills support)
+- `ios-ci.yml` - Xcode build and tests
+- `swiftlint.yml` - SwiftLint checks
+- `testflight.yml` - Fastlane TestFlight upload
+- `security.yml` - Secrets and dependency scanning
 
-### 🧪 Custom Subagents
+### Project Templates
 
-Subagents are specialized helpers that the main agent can delegate to for verification or parallel work. This repo includes a sample verifier subagent.
+- `Package.swift` - Swift Package Manager template
+- `.swiftlint.yml` - Lint rules
+- `.swiftformat` - Formatter rules
+- `Fastfile` - Fastlane lanes for build/test/beta
+- `Info.plist` and `Entitlements.plist` templates
 
-- **Location**: `.cursor/agents/<name>.md`
-- **Format**: YAML frontmatter + prompt
-- **Use cases**: code review, test verification, doc validation
-- **Requires**: Cursor 2.4+ (subagents support)
+## Apple Stack
 
-### 🚀 Automation
+- **Xcode** 17.x
+- **Swift** 5.10
+- **SwiftUI** 5
+- **Swift Concurrency** (async/await, actors)
+- **SwiftData** (or Core Data where needed)
+- **Combine** (for legacy or interoperability)
+- **Testing**: XCTest, XCUITest, Snapshot (optional)
 
-**GitHub Actions**:
-
-- `ci.yml` - Lint, type-check, test, build
-- `security.yml` - npm audit for dependency vulnerability scanning
-- `a11y.yml` - Accessibility testing
-- `visual-regression.yml` - Chromatic visual testing
-- `coverage.yml` - Test coverage reporting
-
-**GitLab CI**:
-
-- Parallel test jobs
-- Security scanning
-- Merge request automation
-
-### 📋 Project Templates
-
-Ready-to-use configurations:
-
-- `vite.config.ts` - Module Federation setup
-- `tsconfig.json` - Strict TypeScript configuration
-- `eslint.config.js` - Flat config with all rules
-- `.storybook/` - Storybook 8+ with testing addons
-- `package.json` - Complete scripts and dependencies
-
-## Key Features
-
-### Type Safety First
-
-Zero tolerance for `any` types. Every piece of code is fully typed with TypeScript 5.5+.
-
-```typescript
-// ✅ Good
-function getUser(id: UserId): Promise<User> { ... }
-
-// ❌ Bad
-function getUser(id: any): any { ... }
-```
-
-### Modern React
-
-Leverage React 18+ concurrent features:
-
-```typescript
-function SearchResults() {
-  const [isPending, startTransition] = useTransition()
-  
-  const handleSearch = (query: string) => {
-    startTransition(() => {
-      setSearchQuery(query) // Non-urgent update
-    })
-  }
-  
-  return <>{isPending && <Spinner />}</>
-}
-```
-
-### Module Federation
-
-Support for both v1 and v2:
-
-```typescript
-// Remote application exposes modules
-federation({
-  name: 'remote_app',
-  exposes: {
-    './Button': './src/components/Button',
-  },
-})
-
-// Host consumes remotes
-federation({
-  name: 'host_app',
-  remotes: {
-    remote_app: 'http://localhost:3001/remoteEntry.js',
-  },
-})
-```
-
-### Performance Targets
-
-Enforced Web Vitals targets:
-
-- **LCP**: < 2.5s
-- **FID**: < 100ms
-- **CLS**: < 0.1
-- **FCP**: < 1.8s
-- **TBT**: < 200ms
-
-### Testing Standards
-
-- **Unit tests**: Vitest + Testing Library (>80% coverage)
-- **Component tests**: User interaction testing
-- **E2E tests**: Playwright for user journeys
-- **Visual regression**: Chromatic for visual testing
-- **Accessibility**: axe-core testing
-
-### Security by Default
-
-- npm audit scanning in CI/CD for vulnerability detection
-- CSP headers configured
-
-### Accessibility
-
-WCAG 2.2 Level AA compliance:
-
-- Semantic HTML required
-- ARIA attributes when needed
-- Keyboard navigation support
-- Screen reader testing
-- Color contrast validation
-
-## Project Structure
-
-```bash
-# Directory structure
-.cursor/
-├── .cursorrules                 # Main AI agent rules
-├── .cursorignore                # Files to exclude from AI indexing
-├── .cursor/                     # Workspace settings
-│   ├── README.md                # Cursor workspace documentation
-│   ├── agents/                  # Custom subagents (optional)
-│   │   └── verifier.md
-│   ├── settings.json            # Workspace IDE settings
-│   ├── skills/                  # Agent skills (optional)
-│   │   └── component-scaffold/
-│   │       └── SKILL.md
-│   └── rules/                   # Additional rule files
-│       ├── README.md
-│       └── project-specific.md
-├── .context/                    # Documentation for AI context
-│   ├── architecture.md
-│   ├── design-system.md
-│   ├── workflows.md
-│   ├── conventions.md
-│   └── stack.md
-├── templates/                   # Project templates
-│   ├── vite.config.ts
-│   ├── tsconfig.json
-│   ├── eslint.config.js
-│   ├── .storybook/
-│   ├── .github/
-│   │   └── workflows/
-│   ├── gitlab-ci.yml
-│   └── package.json
-├── .github/workflows/           # GitHub Actions
-│   ├── ci.yml
-│   ├── security.yml
-│   ├── a11y.yml
-│   ├── visual-regression.yml
-│   └── coverage.yml
-├── .gitlab-ci.yml               # GitLab CI
-├── CONTRIBUTING.md              # Contribution guidelines
-├── ARCHITECTURE.md              # System architecture
-└── README.md                    # This file
-```
-
-## Usage in Cursor
-
-Once copied to your project, Cursor AI will:
-
-1. **Automatically read** `.cursorrules` for coding standards
-2. **Automatically reference** `.context/` documentation for architectural decisions
-3. **Suggest** using templates when creating new files
-4. **Enforce** quality gates (types, tests, security, a11y)
-5. **Discover** skills and apply them when relevant
-6. **Delegate** verification to subagents when helpful
-
-### Verifying Cursor Configuration
-
-To verify Cursor is using your configuration:
-
-1. **Test `.cursorrules`**:
-   - Ask: "What TypeScript standards do you follow?"
-   - Should reference strict mode, no `any` types, etc.
-
-2. **Test `.context/`**:
-   - Ask: "How does Module Federation work in our architecture?"
-   - Should reference `architecture.md` content
-
-3. **Test component patterns**:
-   - Ask: "How should I create a Button component?"
-   - Should reference design system patterns from `design-system.md`
-
-If Cursor doesn't reference these files, verify:
-
-- `.cursorrules` exists in project root
-- `.context/` directory exists in project root
-- Files are not gitignored (they should be committed)
-- Restart Cursor IDE if needed
-
-### Example Workflow
-
-1. You: "Create a Button component"
-2. Cursor AI:
-   - Uses strict TypeScript with proper types
-   - Creates tests with Testing Library
-   - Adds Storybook stories
-   - Implements accessibility requirements
-   - Suggests performance optimizations
-
-## Configuration
-
-### Environment Variables
-
-Create `.env.development`:
-
-```bash
-VITE_API_URL=http://localhost:3000/api
-VITE_ENABLE_DEV_TOOLS=true
-```
-
-### GitHub Secrets (for CI/CD)
-
-Required secrets:
-
-- `CHROMATIC_PROJECT_TOKEN` - For visual regression testing
-- `CODECOV_TOKEN` - For coverage reporting (optional)
-
-### GitLab Variables
-
-Required variables:
-
-## Development Workflow
-
-### Daily Development
-
-```bash
-# Start dev server
-npm run dev
-
-# Run tests in watch mode
-npm run test
-
-# Run accessibility tests
-npm run test:a11y
-
-# Type check
-npm run type-check
-
-# Lint and fix
-npm run lint:fix
-```
-
-### Quality Checks
-
-```bash
-# All checks
-npm run type-check && npm run lint && npm run test && npm run build
-
-# Coverage report
-npm run test:coverage
-
-# Security scan
-npm run security
-```
-
-### Storybook
-
-```bash
-# Start Storybook
-npm run storybook
-
-# Build static Storybook
-npm run build-storybook
-```
-
-## Web Stack
-
-- **React** 18.3+
-- **TypeScript** 5.5+
-- **Vite** 5+
-- **Module Federation** (v1 & v2)
-- **Storybook** 8+ (component docs and interaction tests)
-- **Testing**: Vitest, Testing Library, Playwright, axe-core
-- **Design system**: ShadCN UI (copy-paste), Radix UI primitives, Tailwind CSS
-- **Linting/formatting**: ESLint 9+ (flat config), Prettier 3+
-- **Git hooks**: Husky + lint-staged
-
-See `.context/stack.md` for complete stack details.
-
-## Best Practices
-
-The AI agent enforces these practices:
-
-1. **Type Safety**: No `any` types, strict TypeScript
-2. **Modern React**: Functional components, hooks, concurrent features
-3. **Performance**: Code splitting, memoization, optimization
-4. **Accessibility**: WCAG 2.2 Level AA compliance
-5. **Security**: Secure coding, dependency scanning
-6. **Testing**: >80% coverage, multiple test types
-7. **Code Quality**: ESLint, Prettier, pre-commit hooks
-
-## Customization
-
-### Adding Project-Specific Rules
-
-Edit `.cursorrules` to add project-specific rules:
-
-```markdown
-## Project-Specific Rules
-
-- Use Tailwind CSS for styling
-- Follow Material Design principles
-- Use Zustand for global state
-```
-
-### Adding Agent Skills
-
-Create a new skill folder with a `SKILL.md` file:
-
-```text
-.cursor/
-└── skills/
-    └── my-skill/
-        └── SKILL.md
-```
-
-Skills can be invoked with `/my-skill` in chat, or discovered automatically when relevant.
-
-### Adding Custom Subagents
-
-Create a subagent file in `.cursor/agents/`:
-
-```text
-.cursor/
-└── agents/
-    └── verifier.md
-```
-
-Subagents are used by Agent for parallel work or verification.
-
-### Modifying Templates
-
-Edit files in `templates/` directory to customize:
-
-- `vite.config.ts` - Build configuration
-- `tsconfig.json` - TypeScript settings
-- `eslint.config.js` - Linting rules
-
-## Troubleshooting
-
-### Cursor AI Not Following Rules
-
-1. Restart Cursor IDE
-2. Check `.cursorrules` file is in project root
-3. Verify context files in `.context/` are up to date
-
-### Build Errors
-
-```bash
-# Clear cache and reinstall
-rm -rf node_modules dist
-npm install
-npm run build
-```
-
-### Type Errors
-
-```bash
-# Check TypeScript version
-npx tsc --version
-
-# Run type check
-npm run type-check
-```
+See `.context/stack.md` for full details.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## License
-
-This configuration is provided as-is for use in your projects.
-
-## Additional Documentation
-
-- [Contributing Guide](CONTRIBUTING.md)
-- [Architecture](ARCHITECTURE.md)
-- [Context Documentation](.context/)
-- [Changelog](CHANGELOG.md) - Version history and changes
-
-## Support
-
-For issues with this Cursor setup:
-
-1. Check documentation in `.context/`
-2. Review GitHub/GitLab CI logs
-3. Open an issue on the repository
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
-**Built for developers who refuse to compromise on quality.**
+Built for Apple-native developers who demand quality and craft.

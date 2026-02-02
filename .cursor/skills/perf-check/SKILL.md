@@ -3,25 +3,25 @@ name: perf-check
 description: Run a quick performance review and propose optimizations.
 disable-model-invocation: true
 ---
-# Performance Check
+# Performance Check (Apple)
 
-Provide a focused performance pass for a feature or page.
+Provide a focused performance pass for a screen or flow.
 
 ## When to Use
 
-- Use this skill when UI feels slow or before release.
+- UI feels slow or before release.
 
 ## Inputs
 
-- Target components or pages
+- Target screens or view models
 - Known bottlenecks (if any)
 
 ## Instructions
 
-1. Identify expensive renders or large bundles.
-2. Suggest memoization or derived state fixes.
-3. Recommend code splitting or lazy loading.
-4. Check image and font loading strategies.
+1. Identify main-thread work and blocking IO.
+2. Check SwiftUI body recomputation and state churn.
+3. Recommend Instruments traces (Time Profiler, Leaks).
+4. Review image sizes, caching, and lazy stacks.
 
 ## Output
 

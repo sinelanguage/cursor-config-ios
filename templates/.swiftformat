@@ -1,0 +1,6 @@
+--swiftversion 5.10
+--indent 2
+--linebreaks lf
+--wraparguments after-first
+--wrapparameters after-first
+--selfrequired init-only

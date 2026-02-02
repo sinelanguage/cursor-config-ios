@@ -3,13 +3,13 @@ name: form-pattern
 description: Build a typed form with validation, errors, and tests.
 disable-model-invocation: true
 ---
-# Form Pattern
+# Form Pattern (SwiftUI)
 
 Create a form that is typed, validated, accessible, and tested.
 
 ## When to Use
 
-- Use this skill when building any form or wizard.
+- When building any form or multi-step flow.
 
 ## Inputs
 
@@ -19,11 +19,11 @@ Create a form that is typed, validated, accessible, and tested.
 
 ## Instructions
 
-1. Define a typed form model.
-2. Add validation (client-side and server error mapping).
-3. Implement accessible labels, hints, and error messages.
-4. Add tests for validation and submit behavior.
+1. Define a typed form model and validation rules.
+2. Use `Form` and `Section` with explicit labels.
+3. Map server errors to field-level errors.
+4. Add XCTest coverage for validation logic.
 
 ## Output
 
-- Form component(s) with validation and tests.
+- Form views and validation logic with tests.

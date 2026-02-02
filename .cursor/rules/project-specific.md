@@ -1,38 +1,26 @@
 # Project-Specific Rules
 
-This file contains rules and conventions specific to this project.
-
-## Project Context
-
-Customize this file for your project's specific needs:
-
-- Business logic patterns
-- Domain-specific terminology
-- Project architecture decisions
-- Team conventions
+Use this file for rules that are unique to a specific Apple app.
 
 ## Example Rules
 
 ```markdown
-## API Integration
+## App Architecture
 
-- All API calls must use the centralized API client
-- Error handling must follow the standard error format
-- API responses must be typed with TypeScript interfaces
+- Use MVVM with explicit route models
+- New features must live in `Sources/Features/<FeatureName>/`
 
-## State Management
+## Data Layer
 
-- Use React Context for theme and user preferences
-- Use Zustand for complex global state
-- Avoid prop drilling beyond 3 levels
+- SwiftData models live in `Sources/Shared/Core/Models`
+- Network calls go through `APIClient`
 
-## Component Patterns
+## Accessibility
 
-- Feature components go in `features/` directory
-- Shared components in `components/`
-- Each component must have a corresponding test file
+- All interactive controls require VoiceOver labels
+- Dynamic Type support required for all text
 ```
 
 ## Maintenance
 
-Update this file as project standards evolve. Reference the main `.cursorrules` for general standards and add project-specific extensions here.
+Update this file as the project evolves. Keep `.cursorrules` for global standards.

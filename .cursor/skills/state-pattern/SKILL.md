@@ -3,13 +3,13 @@ name: state-pattern
 description: Choose and implement the right state management pattern.
 disable-model-invocation: true
 ---
-# State Pattern
+# State Pattern (SwiftUI)
 
-Select local vs global state and implement the pattern with best practices.
+Select local vs shared state and implement the pattern with best practices.
 
 ## When to Use
 
-- Use this skill when state is shared across multiple components or routes.
+- When state is shared across multiple views or flows.
 
 ## Inputs
 
@@ -19,10 +19,10 @@ Select local vs global state and implement the pattern with best practices.
 
 ## Instructions
 
-1. Decide local vs global state (justify decision).
-2. Implement store or context if global.
-3. Add selectors or derived state helpers.
-4. Add tests for state updates and selectors.
+1. Decide local (`@State`) vs shared (`@StateObject`, `@Observable`, `@Environment`).
+2. Use a view model for shared state.
+3. Add derived state helpers in view models.
+4. Add tests for state transitions.
 
 ## Output
 

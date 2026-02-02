@@ -1,0 +1,16 @@
+disabled_rules:
+  - trailing_whitespace
+
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - redundant_nil_coalescing
+
+line_length:
+  warning: 120
+  error: 160
+
+excluded:
+  - .build
+  - DerivedData
+  - .swiftpm

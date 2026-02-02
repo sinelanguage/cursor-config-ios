@@ -3,26 +3,26 @@ name: a11y-audit
 description: Perform an accessibility audit checklist and suggest fixes.
 disable-model-invocation: true
 ---
-# Accessibility Audit
+# Accessibility Audit (Apple)
 
-Run a focused accessibility pass and list concrete fixes.
+Run a focused accessibility pass for SwiftUI and UIKit surfaces.
 
 ## When to Use
 
-- Use this skill before release or for new UI surfaces.
+- Before release or for new UI surfaces.
 
 ## Inputs
 
-- Target components or pages
+- Target screens or views
 - Known issues or user reports
 
 ## Instructions
 
-1. Review semantic HTML usage and heading structure.
-2. Check keyboard navigation and focus management.
-3. Validate ARIA usage (only when necessary).
-4. Confirm color contrast and error announcements.
-5. Suggest tests or automation improvements.
+1. Validate VoiceOver labels, hints, and reading order.
+2. Confirm Dynamic Type support and truncation behavior.
+3. Check color contrast in Light and Dark modes.
+4. Ensure focus behavior for tvOS and hardware keyboards.
+5. Suggest automated tests or manual checks.
 
 ## Output
 
