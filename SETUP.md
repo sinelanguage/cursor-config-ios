@@ -107,6 +107,22 @@ Copy the workflow templates:
 cp -r .github <your-project-root>/
 ```
 
+### Fill in Placeholders
+
+Update these fields in the copied workflows:
+
+- `.github/workflows/ios-ci.yml`
+  - `SCHEME`: set to your Xcode scheme
+  - `DESTINATION`: set the simulator device
+- `.github/workflows/testflight.yml`
+  - Ensure required secrets are configured in GitHub
+
+Update these templates if used:
+
+- `templates/Fastfile`: set `SCHEME` or supply `SCHEME` env var
+- `templates/Info.plist`: update bundle version values as needed
+- `templates/Entitlements.plist`: add capabilities per target
+
 Add GitHub secrets:
 
 - `APP_STORE_CONNECT_API_KEY_ID`

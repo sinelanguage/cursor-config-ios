@@ -10,6 +10,7 @@ jobs:
   build-and-test:
     runs-on: macos-latest
     env:
+      # Replace with your app scheme and simulator
       SCHEME: YourApp
       DESTINATION: "platform=iOS Simulator,name=iPhone 15"
     steps:

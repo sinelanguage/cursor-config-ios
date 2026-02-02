@@ -9,6 +9,7 @@ platform :ios do
   desc "Run unit tests"
   lane :tests do
     scan(
+      # Replace with your app scheme or provide SCHEME env var
       scheme: ENV["SCHEME"] || "YourApp",
       clean: true
     )
@@ -17,6 +18,7 @@ platform :ios do
   desc "Build and upload to TestFlight"
   lane :beta do
     build_app(
+      # Replace with your app scheme or provide SCHEME env var
       scheme: ENV["SCHEME"] || "YourApp",
       export_method: "app-store"
     )

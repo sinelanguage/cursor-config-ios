@@ -49,6 +49,20 @@ cp templates/.swiftlint.yml .swiftlint.yml
 cp templates/.swiftformat .swiftformat
 ```
 
+### 2.1 Fill in App-Specific Placeholders
+
+These files contain placeholders that must be replaced per app:
+
+- `.github/workflows/ios-ci.yml` → set `SCHEME` and `DESTINATION`
+- `templates/Fastfile` → set `SCHEME` or provide `SCHEME` env var in CI
+- `templates/Info.plist` → update versioning as needed
+- `templates/Entitlements.plist` → add required capabilities
+
+Where to update:
+
+- In repo templates: edit the files directly before copying.
+- In an app repo: edit the copied files in the app root.
+
 ### 3. Open in Xcode
 
 Use Xcode to create or open your app target, then integrate shared packages from `Package.swift`.
