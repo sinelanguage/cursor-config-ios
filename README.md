@@ -2,7 +2,7 @@
 
 > **Version**: See [latest release](https://github.com/sinelanguage/cursor-config-ios/releases/latest) | [CHANGELOG.md](CHANGELOG.md)
 
-A comprehensive Cursor AI configuration for seasoned Apple developers building native apps for macOS, iOS, iPadOS, and tvOS using Swift 6, modern SwiftUI, Swift Concurrency, and Xcode 18.
+A comprehensive Cursor AI configuration for seasoned Apple developers building native apps for macOS, iOS, iPadOS, and tvOS using Swift 6, modern SwiftUI, Swift Concurrency, and Xcode 26.
 
 ## What This Is
 
@@ -129,9 +129,9 @@ GitHub Actions templates:
 
 ## Apple Stack
 
-- **Xcode** 18.x
+- **Xcode** 26.x
 - **Swift** 6
-- **SwiftUI** 6
+- **SwiftUI**
 - **Swift Concurrency** (async/await, actors)
 - **SwiftData** (or Core Data where needed)
 - **Observation** (`@Observable`, `@Bindable`)

@@ -41,8 +41,8 @@ cp -r .github <your-project-root>/
 
 ### Prerequisites
 
-- macOS 16+
-- Xcode 18.x
+- macOS 26+
+- Xcode 26.x
 - Apple Developer account (for signing and App Store)
 - Ruby 3.x (optional, for Fastlane)
 
@@ -50,10 +50,10 @@ cp -r .github <your-project-root>/
 
 1. Open Xcode and create a new App target (SwiftUI).
 2. Set the deployment targets:
-   - iOS 19
-   - iPadOS 19
-   - macOS 16
-   - tvOS 19
+   - iOS 26
+   - iPadOS 26
+   - macOS 26
+   - tvOS 26
 3. Enable automatic signing for development.
 
 ### Integrate Shared Code with SPM
@@ -73,7 +73,6 @@ In Xcode:
 ```bash
 cp templates/.swiftlint.yml .swiftlint.yml
 cp templates/.swiftformat .swiftformat
-cp templates/Gemfile Gemfile
 ```
 
 Recommended CLI installs (optional):

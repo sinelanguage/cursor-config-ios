@@ -2,9 +2,9 @@
 
 ## Core Platform
 
-- **Xcode**: 18.x
+- **Xcode**: 26.x
 - **Swift**: 6
-- **SwiftUI**: 6
+- **SwiftUI**: current SDK
 - **Swift Concurrency**: async/await, actors, Task
 - **SwiftData**: preferred persistence layer
 - **Observation**: `@Observable`, `@Bindable`
@@ -12,10 +12,10 @@
 
 ## Target Platforms
 
-- **iOS**: 19
-- **iPadOS**: 19
-- **macOS**: 16
-- **tvOS**: 19
+- **iOS**: 26
+- **iPadOS**: 26
+- **macOS**: 26
+- **tvOS**: 26
 
 ## Package Management
 
@@ -24,10 +24,11 @@
 Use SPM for shared code and third-party dependencies.
 
 ```swift
+// swift-tools-version: 6.2
 // Package.swift (template in /templates)
 let package = Package(
   name: "AppCore",
-  platforms: [.iOS(.v19), .macOS(.v16), .tvOS(.v19)],
+  platforms: [.iOS(.v26), .macOS(.v26), .tvOS(.v26)],
   products: [.library(name: "AppCore", targets: ["AppCore"])],
   targets: [.target(name: "AppCore")],
   swiftLanguageModes: [.v6]

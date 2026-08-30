@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update the stack guidance to Swift 6, Xcode 18, Observation, and Swift Testing
+- Update the stack guidance to Swift 6, Xcode 26, Observation, and Swift Testing
 - Modernize workflows with explicit permissions, current runner defaults, and format checks
 - Replace remaining web-centric guidance with Apple-native security and API contract practices
 

@@ -1,13 +1,13 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2
 
 import PackageDescription
 
 let package = Package(
   name: "AppCore",
   platforms: [
-    .iOS(.v19),
-    .macOS(.v16),
-    .tvOS(.v19)
+    .iOS(.v26),
+    .macOS(.v26),
+    .tvOS(.v26)
   ],
   products: [
     .library(name: "AppCore", targets: ["AppCore"])

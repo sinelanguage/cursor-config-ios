@@ -6,8 +6,8 @@ Thank you for contributing to the Apple-native Cursor configuration.
 
 ### Prerequisites
 
-- macOS 16+
-- Xcode 18.x
+- macOS 26+
+- Xcode 26.x
 - Swift 6
 - Git
 - Ruby 3.x (optional, for Fastlane)

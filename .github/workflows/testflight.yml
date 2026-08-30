@@ -33,13 +33,5 @@ jobs:
         run: sudo xcode-select -s "$XCODE_PATH"
       - name: Show toolchain
         run: xcodebuild -version
-      - name: Install Fastlane without Bundler fallback
-        if: ${{ !hashFiles('Gemfile') }}
-        run: sudo gem install fastlane
       - name: Upload to TestFlight
-        run: |
-          if [ -f Gemfile ]; then
-            bundle exec fastlane beta
-          else
-            fastlane beta
-          fi
+        run: bundle exec fastlane beta
