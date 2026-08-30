@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
+<!--
+  Add only the entitlements your app needs.
+  Common examples:
+  - com.apple.developer.associated-domains
+  - com.apple.security.application-groups
+  - keychain-access-groups
+  - aps-environment
+-->
 <dict>
 </dict>
 </plist>

@@ -4,11 +4,12 @@ platform :ios do
   desc "Run SwiftLint"
   lane :lint do
     sh "swiftlint lint"
+    sh "swiftformat --lint ."
   end
 
   desc "Run unit tests"
   lane :tests do
-    scan(
+    run_tests(
       # Replace with your app scheme or provide SCHEME env var
       scheme: ENV["SCHEME"] || "YourApp",
       clean: true

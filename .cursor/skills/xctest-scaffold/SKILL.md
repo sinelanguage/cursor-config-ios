@@ -1,6 +1,6 @@
 ---
 name: xctest-scaffold
-description: Scaffold XCTest cases for a Swift module.
+description: Scaffold Swift Testing or XCTest coverage for a Swift module.
 disable-model-invocation: true
 ---
 # XCTest Scaffold
@@ -18,10 +18,10 @@ Create unit tests for Swift modules and view models.
 
 ## Instructions
 
-1. Create an `XCTestCase` file.
-2. Add tests for normal and edge cases.
-3. Use `async` tests for concurrency.
+1. Prefer a Swift Testing suite for new unit coverage.
+2. Use `XCTestCase` when extending legacy suites or UI tests.
+3. Add normal, edge-case, and async concurrency coverage.
 
 ## Output
 
-- XCTest file with clear, behavior-focused tests.
+- Swift Testing suite or XCTest file with clear, behavior-focused tests.

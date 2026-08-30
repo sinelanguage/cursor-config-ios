@@ -19,7 +19,7 @@ Select local vs shared state and implement the pattern with best practices.
 
 ## Instructions
 
-1. Decide local (`@State`) vs shared (`@StateObject`, `@Observable`, `@Environment`).
+1. Decide local (`@State`) vs shared (`@Observable`, `@Bindable`, `@Environment`).
 2. Use a view model for shared state.
 3. Add derived state helpers in view models.
 4. Add tests for state transitions.

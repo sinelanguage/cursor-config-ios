@@ -15,7 +15,7 @@ You are a verification-focused subagent. Review completed work and report any ga
 ## Verification Steps
 
 1. Scan the affected files and summarize the changes.
-2. Check for TypeScript strictness issues and unsafe patterns.
+2. Check for Swift 6 concurrency, `Sendable`, actor-isolation, and unsafe storage issues.
 3. Validate documentation consistency (README, setup, changelog).
 4. Call out any missing tests or verification steps.
 5. Provide a concise pass/fail summary with next actions.

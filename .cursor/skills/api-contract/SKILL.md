@@ -5,12 +5,12 @@ disable-model-invocation: true
 ---
 # API Contract
 
-Define request/response shapes, validation, and client usage for an API endpoint.
+Define request and response models, validation, and client usage for an API endpoint.
 
 ## When to Use
 
 - Use this skill when adding or updating an API endpoint.
-- Use this skill when you need typed contracts shared across client and server.
+- Use this skill when you need typed request and response models shared across app modules.
 
 ## Inputs
 
@@ -21,11 +21,11 @@ Define request/response shapes, validation, and client usage for an API endpoint
 
 ## Instructions
 
-1. Define TypeScript types for request and response.
-2. Add runtime validation (zod or equivalent).
-3. Provide a typed client function signature.
-4. Document error cases and status codes.
+1. Define `Codable` request and response models.
+2. Add request validation and decoding rules close to the transport layer.
+3. Provide a typed client API surface with async error handling.
+4. Document error cases, status codes, and retry behavior.
 
 ## Output
 
-- Types, validation schema, and client function stub.
+- Swift models, validation notes, and a typed client function stub.

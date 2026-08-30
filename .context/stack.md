@@ -2,19 +2,20 @@
 
 ## Core Platform
 
-- **Xcode**: 17.x
-- **Swift**: 5.10
-- **SwiftUI**: 5
+- **Xcode**: 18.x
+- **Swift**: 6
+- **SwiftUI**: 6
 - **Swift Concurrency**: async/await, actors, Task
 - **SwiftData**: preferred persistence layer
+- **Observation**: `@Observable`, `@Bindable`
 - **Combine**: for legacy or interoperability
 
 ## Target Platforms
 
-- **iOS**: 18
-- **iPadOS**: 18
-- **macOS**: 15
-- **tvOS**: 18
+- **iOS**: 19
+- **iPadOS**: 19
+- **macOS**: 16
+- **tvOS**: 19
 
 ## Package Management
 
@@ -26,9 +27,10 @@ Use SPM for shared code and third-party dependencies.
 // Package.swift (template in /templates)
 let package = Package(
   name: "AppCore",
-  platforms: [.iOS(.v18), .macOS(.v15), .tvOS(.v18)],
+  platforms: [.iOS(.v19), .macOS(.v16), .tvOS(.v19)],
   products: [.library(name: "AppCore", targets: ["AppCore"])],
-  targets: [.target(name: "AppCore")]
+  targets: [.target(name: "AppCore")],
+  swiftLanguageModes: [.v6]
 )
 ```
 
@@ -37,7 +39,7 @@ let package = Package(
 - **SwiftLint**: linting rules
 - **SwiftFormat**: formatting rules
 - **Instruments**: profiling (Time Profiler, Leaks, Allocations)
-- **XCTest / XCUITest**: testing frameworks
+- **Swift Testing / XCTest / XCUITest**: testing frameworks
 
 ## CI/CD
 
@@ -54,6 +56,7 @@ let package = Package(
 ## Security
 
 - **Keychain** for secrets
+- **Privacy manifests** (`PrivacyInfo.xcprivacy`)
 - **App Transport Security** (ATS)
 - **App Sandbox** for macOS
 - **Entitlements** managed per target

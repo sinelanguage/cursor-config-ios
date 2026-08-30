@@ -3,18 +3,43 @@ name: TestFlight
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: testflight-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   testflight:
-    runs-on: macos-latest
+    runs-on: macos-15
     env:
+      # Replace with the Xcode app path installed on your runner when pinning a toolchain
+      XCODE_PATH: /Applications/Xcode.app
       # Configure these secrets in your GitHub repo settings
       APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
       APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
       APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      BUNDLE_WITHOUT: development
     steps:
       - uses: actions/checkout@v4
-      - name: Install Fastlane
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - name: Select Xcode
+        run: sudo xcode-select -s "$XCODE_PATH"
+      - name: Show toolchain
+        run: xcodebuild -version
+      - name: Install Fastlane without Bundler fallback
+        if: ${{ !hashFiles('Gemfile') }}
         run: sudo gem install fastlane
       - name: Upload to TestFlight
-        run: fastlane beta
+        run: |
+          if [ -f Gemfile ]; then
+            bundle exec fastlane beta
+          else
+            fastlane beta
+          fi

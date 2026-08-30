@@ -41,8 +41,8 @@ cp -r .github <your-project-root>/
 
 ### Prerequisites
 
-- macOS 15+
-- Xcode 17.x
+- macOS 16+
+- Xcode 18.x
 - Apple Developer account (for signing and App Store)
 - Ruby 3.x (optional, for Fastlane)
 
@@ -50,10 +50,10 @@ cp -r .github <your-project-root>/
 
 1. Open Xcode and create a new App target (SwiftUI).
 2. Set the deployment targets:
-   - iOS 18
-   - iPadOS 18
-   - macOS 15
-   - tvOS 18
+   - iOS 19
+   - iPadOS 19
+   - macOS 16
+   - tvOS 19
 3. Enable automatic signing for development.
 
 ### Integrate Shared Code with SPM
@@ -73,6 +73,7 @@ In Xcode:
 ```bash
 cp templates/.swiftlint.yml .swiftlint.yml
 cp templates/.swiftformat .swiftformat
+cp templates/Gemfile Gemfile
 ```
 
 Recommended CLI installs (optional):
@@ -87,14 +88,16 @@ brew install swiftformat
 ```bash
 cp templates/Info.plist <target>/Info.plist
 cp templates/Entitlements.plist <target>.entitlements
+cp templates/PrivacyInfo.xcprivacy PrivacyInfo.xcprivacy
 ```
 
-Update bundle identifiers and capabilities in Xcode.
+Update bundle identifiers, capabilities, and privacy manifest declarations in Xcode.
 
 ## Fastlane (Optional)
 
 ```bash
 cp templates/Fastfile fastlane/Fastfile
+cp templates/Gemfile Gemfile
 ```
 
 Create `fastlane/Appfile` with your bundle ID and team settings.
@@ -112,6 +115,7 @@ cp -r .github <your-project-root>/
 Update these fields in the copied workflows:
 
 - `.github/workflows/ios-ci.yml`
+  - `XCODE_PATH`: set to the installed Xcode app if you want a pinned toolchain
   - `SCHEME`: set to your Xcode scheme
   - `DESTINATION`: set the simulator device
 - `.github/workflows/testflight.yml`
@@ -120,8 +124,10 @@ Update these fields in the copied workflows:
 Update these templates if used:
 
 - `templates/Fastfile`: set `SCHEME` or supply `SCHEME` env var
+- `templates/Gemfile`: pin the Fastlane version used locally and in CI
 - `templates/Info.plist`: update bundle version values as needed
 - `templates/Entitlements.plist`: add capabilities per target
+- `templates/PrivacyInfo.xcprivacy`: declare collected data and required-reason APIs
 
 Add GitHub secrets:
 
@@ -137,7 +143,7 @@ Add GitHub secrets:
 ```bash
 swiftlint lint
 swiftformat --lint .
-xcodebuild -scheme <YourApp> -destination "platform=iOS Simulator,name=iPhone 15" test
+xcodebuild -scheme <YourApp> -destination "platform=iOS Simulator,OS=latest,name=iPhone 16" test
 ```
 
 ### Cursor Verification

@@ -31,7 +31,7 @@ graph TD
 ### MVVM Pattern
 
 - **View**: SwiftUI view rendering state
-- **ViewModel**: `Observable` / `ObservableObject` for state and actions
+- **ViewModel**: `@Observable` by default, `ObservableObject` only for compatibility cases
 - **Model**: Domain types and services
 
 ### Navigation
@@ -107,7 +107,7 @@ Rules:
 
 ## Testing Strategy
 
-- **Unit**: View models, services, pure functions
+- **Unit**: Swift Testing suites for view models, services, and pure functions
 - **Integration**: Repository and API client
 - **UI**: XCUITest for critical flows
 - **Snapshot** (optional): `swift-snapshot-testing`

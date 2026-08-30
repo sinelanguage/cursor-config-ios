@@ -34,6 +34,7 @@ docs: update SwiftData migration notes
 - `xcodebuild test` passes
 - UI tests for critical flows
 - Accessibility verified (VoiceOver, Dynamic Type)
+- Privacy manifest and entitlements reviewed
 
 ## CI/CD
 
@@ -48,7 +49,7 @@ docs: update SwiftData migration notes
 
 1. Update `CHANGELOG.md`
 2. Tag release: `vMAJOR.MINOR.PATCH`
-3. Build and upload via Fastlane
+3. Build and upload via `bundle exec fastlane beta`
 4. Verify TestFlight processing
 5. Submit for review
 
@@ -57,5 +58,5 @@ docs: update SwiftData migration notes
 ```bash
 swiftlint lint
 swiftformat --lint .
-xcodebuild -scheme <YourApp> -destination "platform=iOS Simulator,name=iPhone 15" test
+xcodebuild -scheme <YourApp> -destination "platform=iOS Simulator,OS=latest,name=iPhone 16" test
 ```

@@ -1,11 +1,11 @@
 ---
 name: viewmodel-scaffold
-description: Scaffold an MVVM ViewModel with Swift Concurrency.
+description: Scaffold an MVVM view model with Observation and Swift Concurrency.
 disable-model-invocation: true
 ---
 # ViewModel Scaffold
 
-Create a view model with typed state and async actions.
+Create a view model with typed state, Observation, and async actions.
 
 ## When to Use
 
@@ -19,10 +19,10 @@ Create a view model with typed state and async actions.
 
 ## Instructions
 
-1. Define state model and public API.
-2. Implement async actions using `async/await`.
-3. Add unit tests for state transitions.
+1. Define an `@Observable` state model and public API.
+2. Implement async actions using `async/await` with clear actor isolation.
+3. Add Swift Testing coverage for state transitions.
 
 ## Output
 
-- ViewModel file and XCTest coverage.
+- View model file and Swift Testing coverage.
