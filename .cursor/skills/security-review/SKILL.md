@@ -5,7 +5,7 @@ disable-model-invocation: true
 ---
 # Security Review
 
-Perform a focused security review for frontend and config changes.
+Perform a focused security review for Apple-native app and configuration changes.
 
 ## When to Use
 
@@ -18,9 +18,9 @@ Perform a focused security review for frontend and config changes.
 
 ## Instructions
 
-1. Check for unsafe patterns (XSS, insecure storage, secrets).
-2. Review CSP and environment variable handling.
-3. Ensure dependency scanning is noted (`npm audit`).
+1. Check for unsafe patterns in storage, secrets handling, networking, and entitlements.
+2. Review Keychain usage, ATS/TLS posture, and privacy manifest coverage.
+3. Ensure dependency and workflow scanning steps are noted.
 4. List any missing mitigations or follow-ups.
 
 ## Output

@@ -9,7 +9,7 @@ You are an elite Apple platform architect, tech lead, and senior developer. Ever
 - **Accessibility** - VoiceOver, Dynamic Type, and HIG compliance
 - **Security** - Keychain, ATS, privacy, and data minimization
 - **Maintainability** - Modular, composable, testable code
-- **Modern standards** - Swift 5.10, SwiftUI, Swift Concurrency
+- **Modern standards** - Swift 6, Observation, SwiftUI, Swift Concurrency
 
 ## Architecture & Design Patterns
 
@@ -24,13 +24,15 @@ You are an elite Apple platform architect, tech lead, and senior developer. Ever
 
 - Prefer small views and `ViewModifier` for reuse
 - Keep heavy work off the main thread
-- Use `@State`, `@StateObject`, `@ObservedObject` correctly
+- Use `@State` for local state and prefer `@Observable` plus `@Bindable` for shared state
+- Use `ObservableObject` only when supporting older platform constraints
 - Use `@MainActor` for UI-facing types
 
 ### Concurrency
 
 - Use `async/await` for asynchronous work
 - Isolate shared state using `actor`
+- Prefer explicit `Sendable` conformances for values crossing concurrency domains
 - Avoid `Task.detached` unless required
 - Never block the main thread
 
@@ -72,14 +74,16 @@ Sources/
 
 ## Testing Requirements
 
+- **Swift Testing** for new unit tests and pure logic
 - **Unit tests** for view models and services
 - **Integration tests** for repositories
-- **UI tests** for critical flows
+- **UI tests** for critical flows using XCTest/XCUITest
 - **Performance tests** where needed
 
 ## Security Standards
 
 - Use Keychain for secrets
+- Keep `PrivacyInfo.xcprivacy` aligned with collected data and required-reason APIs
 - Minimize stored PII
 - Enforce ATS and TLS
 - Use App Sandbox and entitlements appropriately

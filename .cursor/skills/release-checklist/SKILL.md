@@ -18,10 +18,10 @@ Prepare a release checklist that matches this repo's workflow.
 
 ## Instructions
 
-1. Confirm tests, lint, and build pass.
+1. Confirm tests, lint, format, and build pass.
 2. Ensure changelog is updated and formatted.
-3. Verify version references and tags.
-4. List any deployment or publish steps.
+3. Verify version references, privacy manifests, and entitlements.
+4. List deployment, signing, and publish steps.
 
 ## Output
 

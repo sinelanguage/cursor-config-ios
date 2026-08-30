@@ -14,11 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - SwiftLint, SwiftFormat, Fastlane, and SPM templates
 - GitHub workflows for Xcode CI, SwiftLint, and TestFlight
 - Apple-focused skills for SwiftUI views, view models, and XCTest
+- Privacy manifest and Bundler templates for Apple release workflows
 
 ### Changed
 
-- Replace web tooling guidance with Apple platform guidance
-- Update security workflow to secret scanning
+- Update the stack guidance to Swift 6, Xcode 26, Observation, and Swift Testing
+- Modernize workflows with explicit permissions, current runner defaults, and format checks
+- Replace remaining web-centric guidance with Apple-native security and API contract practices
 
 ### Removed
 

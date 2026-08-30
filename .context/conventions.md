@@ -33,13 +33,14 @@ Sources/
 
 - Views are value types, keep them small
 - Use `@State` for local state
-- Use `@StateObject` for view model ownership
-- Use `@ObservedObject` for injected view models
-- Use `@Environment` and `@EnvironmentObject` sparingly
+- Prefer `@Observable` models and `@Bindable` projections for shared state
+- Use `ObservableObject`, `@StateObject`, and `@ObservedObject` only for backward compatibility
+- Use `@Environment` sparingly and keep dependencies explicit
 
 ## Concurrency
 
 - Use `@MainActor` for UI-facing types
+- Mark cross-actor value types as `Sendable` when they move across concurrency boundaries
 - Mark non-UI work as `nonisolated` where safe
 - Avoid `Task.detached` unless required
 
@@ -51,7 +52,8 @@ Sources/
 
 ## Testing
 
-- `XCTestCase` per feature module
+- Prefer Swift Testing for new unit suites
+- Use `XCTestCase` for UI tests or legacy suites
 - Use `async` tests for async code
 - Minimize UI tests to critical flows
 

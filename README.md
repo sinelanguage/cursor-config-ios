@@ -2,7 +2,7 @@
 
 > **Version**: See [latest release](https://github.com/sinelanguage/cursor-config-ios/releases/latest) | [CHANGELOG.md](CHANGELOG.md)
 
-A comprehensive Cursor AI configuration for seasoned Apple developers building native apps for macOS, iOS, iPadOS, and tvOS using Swift 5.10, SwiftUI, Swift Concurrency, and Xcode 17.
+A comprehensive Cursor AI configuration for seasoned Apple developers building native apps for macOS, iOS, iPadOS, and tvOS using Swift 6, modern SwiftUI, Swift Concurrency, and Xcode 26.
 
 ## What This Is
 
@@ -17,7 +17,7 @@ This is a **portable Cursor AI configuration** you can copy into any Apple-nativ
 - **Custom Subagents** (`.cursor/agents/`) - Verification helpers
   - Auto-detected by Cursor
 - **Automation Templates** - GitHub Actions for Xcode builds and linting
-- **Project Templates** - Swift Package, SwiftLint, SwiftFormat, Fastlane, Info.plist
+- **Project Templates** - Swift Package, SwiftLint, SwiftFormat, Fastlane, Ruby, Info.plist, Privacy Manifest
 
 **Key Point**: Cursor automatically detects `.cursorrules` and `.context/` when you open a project.
 
@@ -47,16 +47,21 @@ cd <your-project-root>
 cp templates/Package.swift Package.swift
 cp templates/.swiftlint.yml .swiftlint.yml
 cp templates/.swiftformat .swiftformat
+cp templates/Gemfile Gemfile
+cp templates/PrivacyInfo.xcprivacy PrivacyInfo.xcprivacy
 ```
 
 ### 2.1 Fill in App-Specific Placeholders
 
 These files contain placeholders that must be replaced per app:
 
-- `.github/workflows/ios-ci.yml` → set `SCHEME` and `DESTINATION`
+- `.github/workflows/ios-ci.yml` → set `XCODE_PATH`, `SCHEME`, and `DESTINATION`
+- `.github/workflows/testflight.yml` → set `XCODE_PATH` if you need a pinned toolchain
 - `templates/Fastfile` → set `SCHEME` or provide `SCHEME` env var in CI
+- `templates/Gemfile` → pin the Fastlane version for local runs and CI
 - `templates/Info.plist` → update versioning as needed
 - `templates/Entitlements.plist` → add required capabilities
+- `templates/PrivacyInfo.xcprivacy` → declare collected data and required-reason APIs
 
 Where to update:
 
@@ -88,12 +93,12 @@ Skills are invoked from Agent chat using `/`:
 
 The `.cursorrules` file configures Cursor to enforce:
 
-- Swift and SwiftUI best practices
-- Swift Concurrency and actor isolation
+- Swift 6, Observation, and SwiftUI best practices
+- Swift Concurrency, actor isolation, and `Sendable`
 - Performance and launch-time optimization
 - Apple accessibility (VoiceOver, Dynamic Type)
-- Secure storage and privacy patterns
-- XCTest and XCUITest standards
+- Secure storage, privacy manifests, and entitlement hygiene
+- Swift Testing, XCTest, and XCUITest standards
 
 ### Context Documentation
 
@@ -119,18 +124,19 @@ GitHub Actions templates:
 - `Package.swift` - Swift Package Manager template
 - `.swiftlint.yml` - Lint rules
 - `.swiftformat` - Formatter rules
-- `Fastfile` - Fastlane lanes for build/test/beta
-- `Info.plist` and `Entitlements.plist` templates
+- `Fastfile` and `Gemfile` - Fastlane lanes and Ruby dependency pinning
+- `Info.plist`, `Entitlements.plist`, and `PrivacyInfo.xcprivacy` templates
 
 ## Apple Stack
 
-- **Xcode** 17.x
-- **Swift** 5.10
-- **SwiftUI** 5
+- **Xcode** 26.x
+- **Swift** 6
+- **SwiftUI**
 - **Swift Concurrency** (async/await, actors)
 - **SwiftData** (or Core Data where needed)
+- **Observation** (`@Observable`, `@Bindable`)
 - **Combine** (for legacy or interoperability)
-- **Testing**: XCTest, XCUITest, Snapshot (optional)
+- **Testing**: Swift Testing, XCTest, XCUITest, Snapshot (optional)
 
 See `.context/stack.md` for full details.
 

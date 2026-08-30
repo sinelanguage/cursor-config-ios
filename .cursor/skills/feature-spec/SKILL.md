@@ -15,7 +15,7 @@ Create a concise product and technical specification for a requested feature.
 ## Inputs
 
 - Feature request or problem statement
-- Target area (frontend, backend, full stack)
+- Target area (app target, shared module, backend integration)
 - Constraints (performance, accessibility, security)
 
 ## Instructions

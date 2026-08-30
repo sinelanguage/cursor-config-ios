@@ -18,9 +18,9 @@ Configure Fastlane for build, test, and TestFlight upload.
 
 ## Instructions
 
-1. Create `fastlane/Fastfile` and `fastlane/Appfile`.
+1. Create `fastlane/Fastfile`, `fastlane/Appfile`, and a root `Gemfile`.
 2. Add lanes for `lint`, `tests`, and `beta`.
-3. Document required secrets for CI.
+3. Document required secrets and Bundler-based CI commands.
 
 ## Output
 

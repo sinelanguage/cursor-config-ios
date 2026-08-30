@@ -6,9 +6,9 @@ Thank you for contributing to the Apple-native Cursor configuration.
 
 ### Prerequisites
 
-- macOS 15+
-- Xcode 17.x
-- Swift 5.10
+- macOS 26+
+- Xcode 26.x
+- Swift 6
 - Git
 - Ruby 3.x (optional, for Fastlane)
 
@@ -37,7 +37,7 @@ Thank you for contributing to the Apple-native Cursor configuration.
    ```bash
    swiftlint lint
    swiftformat --lint .
-   xcodebuild -scheme <YourApp> -destination "platform=iOS Simulator,name=iPhone 15" test
+   xcodebuild -scheme <YourApp> -destination "platform=iOS Simulator,OS=latest,name=iPhone 16" test
    ```
 
 ## Development Workflow
@@ -50,10 +50,11 @@ Thank you for contributing to the Apple-native Cursor configuration.
 ## Code Standards
 
 - SwiftUI with MVVM
-- Swift Concurrency with actor isolation
+- Swift Concurrency with actor isolation and `Sendable`
+- `@Observable` for new shared UI state
 - No `Any` unless justified
 - Accessibility verified (VoiceOver, Dynamic Type)
-- Security reviewed (Keychain, ATS)
+- Security reviewed (Keychain, ATS, privacy manifests)
 
 ## Commit Convention
 
@@ -72,6 +73,7 @@ docs: update Xcode setup steps
 - [ ] `xcodebuild test` passes
 - [ ] Documentation updated
 - [ ] Accessibility checked
+- [ ] Privacy manifest and entitlements reviewed
 
 ## Resources
 

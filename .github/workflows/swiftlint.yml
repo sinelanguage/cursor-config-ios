@@ -4,12 +4,31 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: swift-quality-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  swiftlint:
-    runs-on: macos-latest
+  swift-quality:
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
-      - name: Install SwiftLint
-        run: brew install swiftlint
+      - name: Install SwiftLint and SwiftFormat
+        run: brew install swiftlint swiftformat
       - name: Run SwiftLint
-        run: swiftlint lint
+        run: |
+          config_file=".swiftlint.yml"
+          if [ ! -f "$config_file" ] && [ -f "templates/.swiftlint.yml" ]; then
+            config_file="templates/.swiftlint.yml"
+          fi
+          swiftlint lint --config "$config_file"
+      - name: Run SwiftFormat
+        run: |
+          config_file=".swiftformat"
+          if [ ! -f "$config_file" ] && [ -f "templates/.swiftformat" ]; then
+            config_file="templates/.swiftformat"
+          fi
+          swiftformat --lint . --config "$config_file"

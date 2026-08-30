@@ -1,13 +1,13 @@
-// swift-tools-version: 5.10
+// swift-tools-version: 6.2
 
 import PackageDescription
 
 let package = Package(
   name: "AppCore",
   platforms: [
-    .iOS(.v18),
-    .macOS(.v15),
-    .tvOS(.v18)
+    .iOS(.v26),
+    .macOS(.v26),
+    .tvOS(.v26)
   ],
   products: [
     .library(name: "AppCore", targets: ["AppCore"])
@@ -22,5 +22,6 @@ let package = Package(
       dependencies: ["AppCore"],
       path: "Tests/AppCoreTests"
     )
-  ]
+  ],
+  swiftLanguageModes: [.v6]
 )
